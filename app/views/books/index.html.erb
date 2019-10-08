@@ -3,7 +3,7 @@
   <%= @user.name %>
   <%= @user.introduction %>
   <div class="editUser">
-    <%= link_to "profile_edit" %>
+    <%= link_to "profile_edit" , edit_user_path(@user)%>
   </div>
 </div>
 <div class="newBook">
