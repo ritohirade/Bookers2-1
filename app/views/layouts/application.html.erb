@@ -19,13 +19,13 @@
       <div class="header-list">
         <% if user_signed_in? %>
           <li class="">
-            <%= link_to 'Home' %>
+            <%= link_to 'Home', user_path(user) %>
           </li>
           <li class="">
-            <%= link_to 'Users', user_path %>
+            <%= link_to 'Users' %>
           </li>
           <li class="">
-            <%= link_to 'Books',  %>
+            <%= link_to 'Books' %>
           </li>
           <li class="">
             <%= link_to 'logout', destroy_user_session_path, method: :delete %>
@@ -38,10 +38,14 @@
             <%= link_to 'About' %>
           </li>
           <li class="">
-            <%= link_to 'sign up' %>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+            <% end %>
           </li>
           <li class="">
-            <%= link_to 'login' %>
+            <%- if controller_name != 'sessions' %>
+              <%= link_to "Log in", new_session_path(resource_name) %><br />
+            <% end %>
           </li>
         <% end %>
       </div>
