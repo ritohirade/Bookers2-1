@@ -1,4 +1,21 @@
-<h2>Users</h2>
+<div class="userInfo">
+  <h2>User info</h2>
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <div class="editUser">
+    <%= link_to "プロフィールを編集" , edit_user_path(@user)%>
+  </div>
+</div>
+<div class="newBook">
+  <h2>New Book</h2>
+  <%= form_for(@book) do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    <h4>Opinion</h4>
+    <%= f.text_area :body %><br>
+    <%= f.submit 'Create book' %>
+  <% end %>
+</div><h2>Users</h2>
 <table rules="rows">
   <tr>
     <td><strong>image</strong></td>

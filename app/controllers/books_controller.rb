@@ -15,7 +15,7 @@ before_action :authenticate_user!, except: [:top]
     @user = current_user
   end
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find(id:params[:id])
   end
   def top
 
