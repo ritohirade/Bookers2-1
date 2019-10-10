@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+before_action :authenticate_user!, except: [:top]
   def new
     @book = Book.new
   end
@@ -17,7 +18,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   def top
-    
+
   end
 
   private
