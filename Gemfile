@@ -65,3 +65,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'rspec-rails'
+gem "factory_bot_rails"
+gem 'rspec-parameterized'
+gem 'faker', '~> 2.0.0'
+gem 'shoulda-matchers'
+gem 'rails-controller-testing'
