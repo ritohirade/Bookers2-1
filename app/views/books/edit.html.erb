@@ -1,0 +1,9 @@
+¥<h2>Editing Book</h2>
+<p>Title</p>
+<%= f.text_field :title %>
+<p>Opinion</p>
+<%= f.text_area :body %><br>
+<%= f.submit 'Update Book' %>
+
+<%= link_to "Show", book_path %>
+<%= link_to "Back", books_path %>

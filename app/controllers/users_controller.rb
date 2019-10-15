@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
   def index
     @users = User.all
-    @user = User.find(params[:id])
+    @user = current_user
+    @book = Book.new
   end
 
   private
