@@ -1,6 +1,7 @@
 <%= flash[:notice] %>
 <div class="userInfo">
   <h2>User info</h2>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
   <%= @user.name %>
   <%= @user.introduction %>
   <div class="editUser">
@@ -21,6 +22,8 @@
   <h2>Book Detail</h2>
   <table rules="rows">
     <tr>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
+      <%= @user.name %>
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
       <% if current_user.id == @user.id %>
