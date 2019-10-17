@@ -39,15 +39,15 @@ before_action :authenticate_user!, except: [:top]
     if @book.update(book_params)
       flash[:notice] = 'You have updated book successfully.'
       redirect_to book_path(@book)
-    else
-      render :index
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to books_path
+    if @book.destroy
+      flash[:notice] = 'You have destroyed book successfully.'
+      redirect_to books_path
+    end
   end
 
 
