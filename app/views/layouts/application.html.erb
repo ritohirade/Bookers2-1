@@ -12,11 +12,12 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <header>
-      <div class="header-logo">
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class='nav navbar-nav navbar-left' >
         <h2>Bookers2</h2>
-      </div>
-      <div class="header-list">
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="">
             <%= link_to 'Home', user_path(current_user) %>
@@ -32,10 +33,10 @@
           </li>
         <% else %>
           <li class="">
-            <%= link_to 'Home' %>
+            <%= link_to 'Home', root_path %>
           </li>
           <li class="">
-            <%= link_to 'About' %>
+            <%= link_to 'About', home_about_path %>
           </li>
           <li class="">
               <%= link_to "Sign up", new_user_registration_path %><br />
@@ -44,8 +45,10 @@
               <%= link_to "Log in", new_user_session_path %><br />
           </li>
         <% end %>
-      </div>
+        </ul>
+      </nav>
     </header>
+    <%= flash[:notice] %>
     <%= yield %>
     <footer>
       <p>CopyRight Infratop.inc</p>

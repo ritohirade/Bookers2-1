@@ -1,11 +1,16 @@
+<div class='col-xs-3'>
 <div class="userInfo">
   <h2>User info</h2>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-available.png", size: '200x200' %>
   <%= @user.name %>
   <%= @user.introduction %>
   <div class="editUser">
     <% if current_user == @user %>
-      <%= link_to "profile_edit" , edit_user_path(@user)%>
+      <%= link_to edit_user_path(@user) do %>
+        <span class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_8282" href="/users/8282/edit"></span>
+      <% end %>
+    <% else %>
+     <%= link_to "プロフィールを編集" , user_path(current_user) %>
     <% end %>
   </div>
 </div>
@@ -19,9 +24,11 @@
     <%= f.submit 'Create book' %>
   <% end %>
 </div>
+</div>
+<div class='col-xs-9'>
 <div class="Books">
   <h2>Books</h2>
-  <table rules="rows">
+  <table class="table">
     <tr>
       <td><strong>Title</strong></td>
       <td><strong>Opinion</strong></td>
@@ -30,7 +37,7 @@
     <tr>
       <td>
         <%= link_to book_path(book) do %>
-        <%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+        <%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-available.png", size: '80x80' %>
         <% end %>
       </td>
       <td><%= link_to book.title, book_path(book.id) %></td>
@@ -38,4 +45,5 @@
     </tr>
     <% end %>
   </table>
+</div>
 </div>

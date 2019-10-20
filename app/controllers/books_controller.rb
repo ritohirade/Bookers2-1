@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-before_action :authenticate_user!, except: [:top]
+before_action :authenticate_user!
   def new
     @book = Book.new
   end
@@ -10,6 +10,10 @@ before_action :authenticate_user!, except: [:top]
       flash[:notice] = 'You have creatad book successfully.'
       redirect_to book_path(@book)
     else
+      flash[:notice] = "error"
+      @books = Book.all
+      @book = Book.new
+      @user = current_user
       render :index
     end
   end
@@ -17,12 +21,6 @@ before_action :authenticate_user!, except: [:top]
     @books = Book.all
     @book = Book.new
     @user = current_user
-  end
-
-  def top
-
-  end
-  def about
   end
   def show
     @books = Book.all
@@ -32,6 +30,9 @@ before_action :authenticate_user!, except: [:top]
   end
   def edit
     @book = Book.find(params[:id])
+    if @book.user != current_user
+      redirect_to books_path
+    end
   end
 
   def update
@@ -39,6 +40,9 @@ before_action :authenticate_user!, except: [:top]
     if @book.update(book_params)
       flash[:notice] = 'You have updated book successfully.'
       redirect_to book_path(@book)
+    else
+      flash[:notice] = "error"
+      render "edit"
     end
   end
 
